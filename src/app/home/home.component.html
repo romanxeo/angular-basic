@@ -1,0 +1,15 @@
+<div class="body">
+  <div class="content">
+    <app-home-button
+      *ngFor="let itemCard of cardsArray$ | async"
+      [cardId]="itemCard.id"
+      [title]="itemCard.title"
+    >
+    </app-home-button>
+
+    <div class="buttonContainer">
+      <button class="myButton" (click)="addCard()">Add New Card</button>
+    </div>
+
+  </div>
+</div>
