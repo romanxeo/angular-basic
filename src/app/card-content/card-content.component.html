@@ -1,3 +1,16 @@
 <div class="content">
-  card-content works! {{card?.title}}
+  {{this.card?.title}} - {{this.card?.description}} - {{cardId}}
+
+  <div class="buttonContainer">
+    <button class="myButton" (click)="addEvent('create')">Create Event</button>
+    <button class="myButton" (click)="addEvent('get')">Get Event</button>
+    <button class="myButton" (click)="addEvent('delete')">Delete Event</button>
+  </div>
+
+  <app-event-item
+    *ngFor="let itemEvent of this.card?.eventsArray"
+    [itemEvent]="itemEvent"
+    [cardId]="this.card?.id"
+  >
+  </app-event-item>
 </div>

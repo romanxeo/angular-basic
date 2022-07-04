@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {select, Store} from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import {Observable} from "rxjs";
-import {cardType, initStateType} from "../../store/init.reducer";
-import {selectorCardsArray, selectorCardsCount} from "../../store/init.selectors";
-import {addCardAction} from "../../store/init.actions";
+import {v1} from "uuid";
+import {addCardAction, cardsArraySelector, cardType} from "../../store/app";
 
 @Component({
   selector: 'app-home',
@@ -12,23 +11,21 @@ import {addCardAction} from "../../store/init.actions";
 })
 export class HomeComponent implements OnInit {
 
-  public cardsArray$: Observable<cardType[]> = this.store$.pipe(select(selectorCardsArray));
-  public cardsCount$: Observable<number> = this.store$.pipe(select(selectorCardsCount));
+  public cardsArray$: Observable<cardType[]> = this.store.select(cardsArraySelector);
 
-  constructor(private store$: Store<initStateType>) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
   }
 
   async addCard () {
-
     const card: cardType = {
+      id: v1(),
       title: 'New Title 1',
-      description: 'New Desription 1',
+      description: 'New Description 1',
       eventsArray: [],
     }
-
-    this.store$.dispatch(new addCardAction(card));
+    this.store.dispatch(addCardAction({card}));
   }
 
 }

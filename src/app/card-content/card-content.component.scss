@@ -3,13 +3,40 @@
   width: 90%;
   min-width: 600px;
   height: 100%;
-  //background-color: aliceblue;
+
   margin: 0 auto;
   padding: 10px 0;
+}
 
-  //display: flex;
-  //flex-flow: row wrap;
-  //justify-content: flex-end;
-  //align-items: center;
-  //align-content: center;
+.buttonContainer {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.myButton {
+  background-color: #2f6627;
+  border:1px solid #000000;
+  cursor: pointer;
+  color: #ffffff;
+  font-size:18px;
+  text-decoration:none;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.myButton:hover {
+  background-color: #54b246;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
 }

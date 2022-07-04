@@ -1,0 +1,20 @@
+.content {
+  width: 200px;
+  height: 60px;
+  border: 1px solid gray;
+  margin-top: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}

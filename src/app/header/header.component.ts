@@ -6,7 +6,6 @@ export type buttonNavType = {
   link: string;
 }
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

@@ -1,18 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {cardType} from "../../store/init.reducer";
+import {Component, Input,} from '@angular/core';
+import {cardType, eventType, initStateType} from "../../store/app";
+import {addEventAction} from "../../store/app";
+import {v1} from "uuid";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-card-content',
   templateUrl: './card-content.component.html',
   styleUrls: ['./card-content.component.scss']
 })
-export class CardContentComponent implements OnInit {
+export class CardContentComponent {
 
-  @Input() card: any | undefined | cardType
+  @Input() cardId!: string
+  @Input() card!: cardType | null
 
-  constructor() { }
+  constructor(private store: Store<initStateType>) {}
 
-  ngOnInit(): void {
+  async addEvent (type: string) {
+    const event: eventType = {
+      id: v1(),
+      title: `New ${type}`,
+      type
+    }
+    this.store.dispatch(addEventAction({cardId: this.card?.id as string, event}));
   }
 
 }

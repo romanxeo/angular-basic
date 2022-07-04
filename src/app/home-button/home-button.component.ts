@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {removeCardAction} from "../../store/app";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-home-button',
@@ -7,12 +9,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HomeButtonComponent implements OnInit {
 
-  @Input() cardId: number | undefined
-  @Input() title: string | undefined
+  @Input() cardId!: string
+  @Input() title!: string
 
-  constructor() { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
   }
 
+  removeCard () {
+    this.store.dispatch(removeCardAction({cardId: this.cardId}));
+  }
 }
